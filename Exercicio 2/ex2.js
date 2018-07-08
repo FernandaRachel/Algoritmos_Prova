@@ -74,6 +74,26 @@ function possiblesDiagonal() {
     return possibleDiagon;
 }
 
+function validateIfStringIsAlreadyInOutput(string, output) {
+    var aux = string.substring(1, 8);
+    var aux2 = string.substring(11, 16);
+    var newString = aux + aux2;
+    var exits = false;
+
+    output.forEach((obj) => {
+        var value = obj.indexOf(aux);
+        var value2 = obj.indexOf(aux2);
+        if (value != -1 && value2 != -1) {
+            exits = true;
+        }
+    })
+
+    return exits;
+
+
+
+}
+
 function Queens3D(strArr) {
     var receivedArray = changeArray(strArr);
     var possiblesDiagon = possiblesDiagonal();
@@ -88,7 +108,9 @@ function Queens3D(strArr) {
                     receivedArray[i2].z == receivedArray[i2].z) {
                     string = "( " + receivedArray[i].x + "," + receivedArray[i].y + "," + receivedArray[i].z + " )" +
                         "( " + receivedArray[i2].x + "," + receivedArray[i2].y + ", " + receivedArray[i2].z + " )";
-                    output.push(string);
+                    var exits = validateIfStringIsAlreadyInOutput(string, output);
+                    if (!exits)
+                        output.push(string);
                     console.log("(" + "ta na mesma coluna " + ")");
 
                 } else if (receivedArray[i].y == receivedArray[i2].y &&
@@ -96,7 +118,9 @@ function Queens3D(strArr) {
                     console.log("(" + "ta na mesma linha " + ")");
                     string = "( " + receivedArray[i].x + "," + receivedArray[i].y + "," + receivedArray[i].z + " )" +
                         "( " + receivedArray[i2].x + "," + receivedArray[i2].y + "," + receivedArray[i2].z + " )";
-                    output.push(string);
+                    var exits = validateIfStringIsAlreadyInOutput(string, output);
+                    if (!exits)
+                        output.push(string);
 
                 } else {
                     possiblesDiagon.forEach(obj => {
@@ -109,7 +133,11 @@ function Queens3D(strArr) {
                                         console.log("(" + "ta na mesma diagonal " + ")");
                                         string = "( " + receivedArray[i].x + "," + receivedArray[i].y + "," + receivedArray[i].z + " )" +
                                             "( " + receivedArray[i2].x + "," + receivedArray[i2].y + "," + receivedArray[i2].z + " )";
-                                        output.push(string);
+
+                                        var exits = false;
+                                        exits = validateIfStringIsAlreadyInOutput(string, output);
+                                        if (!exits)
+                                            output.push(string);
                                     }
 
                                 }
@@ -126,8 +154,9 @@ function Queens3D(strArr) {
     }
 
     console.log("output: " + output);
-    console.log(receivedArray);
+    // console.log(receivedArray);
 
+    return output;
 }
 
 Queens3D(strArr);
