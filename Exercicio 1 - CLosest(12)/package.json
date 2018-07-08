@@ -1,0 +1,22 @@
+{
+    "name": "",
+    "version": "",
+    "description": "",
+    "author": "Fernanda Rachel",
+    "private": true,
+    "scripts": {
+        "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+        "start": "npm run dev",
+        "test": "npm run unit",
+        "build": "node build/build.js"
+    },
+    "engines": {
+        "node": ">= 4.0.0",
+        "npm": ">= 3.0.0"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not ie <= 8"
+    ]
+}
