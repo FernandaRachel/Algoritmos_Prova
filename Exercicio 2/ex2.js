@@ -5,6 +5,11 @@ var strArr = [
     "(3,4,7)", "(1,6,2)", "(7,7,7)", "(5,8,1)"
 ];
 
+// var strArr = ["(2,1,5)", "(5,4,3)", "(2,2,2)", "(1,8,4)",
+//     "(3,4,5)", "(1,8,3)", "(7,7,7)", "(1,5,8)"
+// ]
+
+
 function changeArray(array) {
     var newArray = [];
     var newObj = {};
@@ -105,7 +110,7 @@ function Queens3D(strArr) {
             if (i != i2) {
 
                 if (receivedArray[i].x == receivedArray[i2].x &&
-                    receivedArray[i2].z == receivedArray[i2].z) {
+                    receivedArray[i].z == receivedArray[i2].z) {
                     string = "( " + receivedArray[i].x + "," + receivedArray[i].y + "," + receivedArray[i].z + " )" +
                         "( " + receivedArray[i2].x + "," + receivedArray[i2].y + ", " + receivedArray[i2].z + " )";
                     var exits = validateIfStringIsAlreadyInOutput(string, output);
@@ -114,7 +119,7 @@ function Queens3D(strArr) {
                     console.log("(" + "ta na mesma coluna " + ")");
 
                 } else if (receivedArray[i].y == receivedArray[i2].y &&
-                    receivedArray[i2].z == receivedArray[i2].z) {
+                    receivedArray[i].z == receivedArray[i2].z) {
                     console.log("(" + "ta na mesma linha " + ")");
                     string = "( " + receivedArray[i].x + "," + receivedArray[i].y + "," + receivedArray[i].z + " )" +
                         "( " + receivedArray[i2].x + "," + receivedArray[i2].y + "," + receivedArray[i2].z + " )";
